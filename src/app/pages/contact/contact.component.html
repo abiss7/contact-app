@@ -1,0 +1,145 @@
+<div class="justify-content-center animate__animated animate__fadeIn fast">
+
+    <div>
+        <div>
+            <img class="logo" src="assets/images/logo.png" />
+        </div>
+    </div>
+
+    <div class="row jumbotron animate__animated animate__fadeInRight fast" *ngIf="!showForm; else form">
+        <h1 class="display-6">Bienvenido a nuestra iglesia</h1>
+        <p class="lead">Para conocerte mejor y ministrarle eficazmente, por favor complete el siguiente formulario.</p>
+        <hr class="my-4">
+        <p>Presione Continuar para comenzar la carga.</p>
+        <p class="lead">
+            <button class="btn btn-primary" (click)="habilitarForm()" role="button">Continuar</button>
+        </p>
+    </div>
+
+    <ng-template #form>
+        <div class="row justify-content-center mt-5 animate__animated animate__fadeInRight fast">
+            <div class="col-12">
+                <form *ngIf="formGroup" [formGroup]="formGroup" novalidate="novalidate" (submit)="guardarForm($event)">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre">
+                        <div *ngIf="(formGroup?.get('name')?.dirty || formGroup?.get('name')?.touched) && formGroup?.get('name')?.errors?.required"
+                            class="alert alert-danger" role="alert">
+                            El nombre es necesario
+                        </div>
+                        <div *ngIf="formGroup?.get('name')?.errors?.maxlength" class="alert alert-danger" role="alert">
+                            Se ha excedido de caracteres permitidos
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="lastname" class="form-control" id="lastname"
+                            placeholder="Apellido">
+                        <div *ngIf="(formGroup?.get('lastname')?.dirty || formGroup?.get('lastname')?.touched) && formGroup?.get('lastname')?.errors?.required"
+                            class="alert alert-danger" role="alert">
+                            El apellido es necesario
+                        </div>
+                        <div *ngIf="formGroup?.get('lastname')?.errors?.maxlength" class="alert alert-danger"
+                            role="alert">
+                            Se ha excedido de caracteres permitidos
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="address" class="form-control" id="address"
+                            placeholder="Dirección">
+                        <div *ngIf="formGroup?.get('address')?.errors?.maxlength" class="alert alert-danger"
+                            role="alert">
+                            Se ha excedido de caracteres permitidos
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="locality" class="form-control" id="locality"
+                            placeholder="Localidad">
+                        <div *ngIf="formGroup?.get('locality')?.errors?.maxlength" class="alert alert-danger"
+                            role="alert">
+                            Se ha excedido de caracteres permitidos
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" formControlName="phone" class="form-control" id="phone"
+                            placeholder="Teléfono / Celular">
+                        <div *ngIf="formGroup?.get('phone')?.errors?.maxlength" class="alert alert-danger" role="alert">
+                            Se ha excedido de caracteres permitidos
+                        </div>
+                        <div *ngIf="formGroup?.get('phone')?.errors?.pattern" class="alert alert-danger" role="alert">
+                            No es un teléfono o celular
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+                        <div *ngIf="formGroup?.get('email')?.errors?.maxlength" class="alert alert-danger" role="alert">
+                            Se ha excedido de caracteres permitidos
+                        </div>
+                        <div *ngIf="formGroup?.get('email')?.errors?.pattern" class="alert alert-danger" role="alert">
+                            No es un email
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" formControlName="age" class="form-control" id="age" placeholder="Edad">
+                        <div *ngIf="formGroup?.get('age')?.errors?.maxlength" class="alert alert-danger" role="alert">
+                            Se ha excedido de caracteres permitidos
+                        </div>
+                        <div *ngIf="formGroup?.get('age')?.errors?.pattern" class="alert alert-danger" role="alert">
+                            No es una edad
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" formControlName="dateVisit" class="form-control" id="dateVisit"
+                            placeholder="Fecha de visita">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" formControlName="comment1" name="comment1" rows="3"
+                            placeholder="Conocí la iglesia por..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" formControlName="comment2" name="comment2" rows="3"
+                            placeholder="Comentarios..."></textarea>
+                    </div>
+
+                    <hr>
+                    <h3>Favor de seleccionar lo que corresponda:</h3>
+
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="visitMe" formControlName="visitMe">
+                            <label class="custom-control-label" for="visitMe">Quisiera que me visite un pastor o miembro de la iglesia</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="goOtherChurh" formControlName="goOtherChurh">
+                            <label class="custom-control-label" for="goOtherChurh">Asisto a otra iglesia</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="niceMeet" formControlName="niceMeet">
+                            <label class="custom-control-label" for="niceMeet">Me gustó la reunión</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="wantToKnowMore" formControlName="wantToKnowMore">
+                            <label class="custom-control-label" for="wantToKnowMore">Me gustaría saber más acerca de esta iglesia</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="wantToKnowMoreCristiano" formControlName="wantToKnowMoreCristiano">
+                            <label class="custom-control-label" for="wantToKnowMoreCristiano">Me gustaría saber más acerca de ser un cristiano</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="formGroup?.invalid">
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </ng-template>
+</div>
