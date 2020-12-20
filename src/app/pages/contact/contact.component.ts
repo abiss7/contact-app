@@ -50,8 +50,6 @@ export class ContactComponent implements OnInit {
     event.preventDefault();
     if ( this.formGroup?.valid ) {
 
-      console.log(moment(this.formGroup.value.dateVisit).toISOString());
-
       const data = {
 
         "name": this.formGroup.value.name,
@@ -84,7 +82,7 @@ export class ContactComponent implements OnInit {
               Swal.showLoading();
             }
         });
-        console.log(data);
+        
         const resp = await this.contactService.save(data);
         
         Swal.fire({
