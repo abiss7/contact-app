@@ -1,0 +1,17 @@
+MongoDB Atlass: 
+ email: andrehanbiss86@hotmail.com
+ password: 777Diosesluz777
+
+Credenciales de la base:
+ abiss7
+ q1w2e3r4
+
+para conectar:
+mongodb+srv://abiss7:q1w2e3r4@cluster0.izioh.mongodb.net/crud-contact?retryWrites=true&w=majority
+
+Tutorial de cómo publicar la base de mongoDB:
+
+https://www.youtube.com/watch?v=TLPtf9tw7EY&ab_channel=RedesPlus
+
+Tutorial de cómo usar mongoole (ORM):
+https://www.youtube.com/watch?v=3J925fRl_UE&ab_channel=FaztCode
